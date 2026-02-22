@@ -1,6 +1,8 @@
 {
   "name": "test",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/common-utils:1": {
       "username": "jmr-dev",
@@ -8,6 +10,8 @@
       "userGid": "1000"
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ripgrep fd-find bat tmux neovim unzip curl && git clone https://github.com/joshuamrollo/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh",
+  "postCreateCommand": {
+    "setup-dotfiles": "if [ ! -d \"$HOME/dotfiles\" ]; then git clone https://github.com/joshuamrollo/dotfiles.git \"$HOME/dotfiles\"; fi && cd \"$HOME/dotfiles\" && ./install.sh"
+  },
   "remoteUser": "jmr-dev"
 }
