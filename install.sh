@@ -1,7 +1,7 @@
 #!/bin/bash
 DOTFILES_DIR=$HOME/dotfiles
 
-
+mkdir -p "$HOME/.config"
 ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
 
