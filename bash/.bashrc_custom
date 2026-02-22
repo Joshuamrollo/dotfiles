@@ -1,3 +1,5 @@
+PS1='\[\e[1;31m\]\u@\h\[\e[0m\]:\[\e[1;36m\]\w\[\e[0m\]\$ '
+
 # --- FILE VIEWING (bat) ---
 if command -v batcat &> /dev/null; then
     alias cat='batcat --paging=never'
