@@ -33,3 +33,7 @@ fi
 if command -v btop &> /dev/null; then
     alias top='btop'
 fi
+
+alias dcup='devcontainer up --workspace-folder .'
+alias dcex='devcontainer exec --workspace-folder . /bin/bash'
+alias dcuprm='devcontainer up --workspace-folder . --remove-existing-container'
