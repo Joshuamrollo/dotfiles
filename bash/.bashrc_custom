@@ -1,0 +1,54 @@
+# --- FILE VIEWING (bat) ---
+if command -v batcat &> /dev/null; then
+    alias cat='batcat --paging=never'
+elif command -v bat &> /dev/null; then
+    alias cat='bat --paging=never'
+fi
+
+# --- FILE LISTING (eza) ---
+if command -v eza &> /dev/null; then
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza -l --icons --git'
+fi
+
+# --- SEARCHING (ripgrep) ---
+if command -v rg &> /dev/null; then
+    alias grep='rg'
+fi
+
+# --- FINDING (fd) ---
+if command -v fd &> /dev/null; then
+    alias find='fd'
+fi
+
+# --- EDITOR (neovim) ---
+if command -v nvim &> /dev/null; then
+    alias vi='nvim'
+    alias vim='nvim'
+fi
+
+# --- SYSTEM MONITOR (btop) ---
+if command -v btop &> /dev/null; then
+    alias top='btop'
+fi
+
+
+# Prompt styling (Starship is great if you install it, otherwise default)
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+
+
+dev() {
+    # 1. Use the first argument as the folder, or default to the current directory (.)
+    local TARGET_DIR=${1:-$(pwd)}
+    
+    # 2. Check if a .devcontainer folder exists there
+    if [ ! -d "$TARGET_DIR/.devcontainer" ]; then
+        echo "❌ Error: No .devcontainer folder found in $TARGET_DIR"
+        return 1
+    fi
+
+    # 3. Start the container and enter it
+    echo "🚀 Launching Dev Container in $TARGET_DIR..."
+    devcontainer up --workspace-folder "$TARGET_DIR"
+    devcontainer exec --workspace-folder "$TARGET_DIR" /bin/bash
+}
