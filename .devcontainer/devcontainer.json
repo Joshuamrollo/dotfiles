@@ -1,9 +1,13 @@
 {
-  "name": "Fedora-Native Dev Environment",
+  "name": "test",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:1": {}
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "username": "jmr-dev",
+      "userUid": "1000",
+      "userGid": "1000"
+    }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ripgrep fd-find bat tmux stow && git clone https://github.com/joshuamrollo/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh",
-  "remoteUser": "vscode"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ripgrep fd-find bat tmux neovim unzip curl && git clone https://github.com/joshuamrollo/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh",
+  "remoteUser": "jmr-dev"
 }
