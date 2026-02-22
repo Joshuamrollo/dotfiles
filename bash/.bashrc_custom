@@ -33,5 +33,3 @@ fi
 if command -v btop &> /dev/null; then
     alias top='btop'
 fi
-
-

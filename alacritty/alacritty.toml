@@ -7,8 +7,8 @@ text = "#010409"
 cursor = "#f0f3f6"
 
 [colors.selection]
-text = "#f0f3f6"
-background = "#ffffff"
+text = "#ffffff"
+background = "#007acc"
 
 [colors.normal]
 black = "#7a828e"
