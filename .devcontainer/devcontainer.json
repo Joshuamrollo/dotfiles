@@ -1,8 +1,11 @@
 {
-  "name": "test",
+  "name": "projectname",
   "build": {
     "dockerfile": "Dockerfile"
   },
+    "runArgs": [
+    "--name", "devcontainer-projectname"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:1": {
       "username": "jmr-dev",
