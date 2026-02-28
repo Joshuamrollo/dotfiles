@@ -1,8 +1,12 @@
 {
-  "name": "test",
+  "name": "projectname",
   "build": {
     "dockerfile": "Dockerfile"
   },
+    "runArgs": [
+    "--name", "devcontainer-projectname"
+  ],
+  "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:1": {
       "username": "jmr-dev",
@@ -11,6 +15,7 @@
     }
   },
   "postCreateCommand": {
+    "ownership": "sudo chown -R jmr-dev:jmr-dev /workspaces",
     "setup-dotfiles": "if [ ! -d \"$HOME/dotfiles\" ]; then git clone https://github.com/joshuamrollo/dotfiles.git \"$HOME/dotfiles\"; fi && cd \"$HOME/dotfiles\" && ./install.sh"
   },
   "remoteUser": "jmr-dev"
